@@ -7,8 +7,9 @@
  * @author    Salomé LILTI
  */
 
+
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-$idVisiteur = $_SESSION['idUtilisateur']; //g changé de idVisiteur à idUtilisateur mais je c pas si c intelligent
+$idVisiteur = $_SESSION['idUtilisateur'];
 switch ($action) {
 case 'selectionnerMois':
     $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
@@ -17,6 +18,8 @@ case 'selectionnerMois':
     // les mois étant triés décroissants
     $lesCles = array_keys($lesMois);//le tableau est affecté à lesMois en précisant que le type est tableau. 
     $moisASelectionner = $lesCles[0];
+    
+   
     include 'vues/v_listeMois.php';
     break;
 case 'voirEtatFrais':
@@ -33,5 +36,6 @@ case 'voirEtatFrais':
     $montantValide = $lesInfosFicheFrais['montantValide'];
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
+   
     include 'vues/v_etatFrais.php';
 }

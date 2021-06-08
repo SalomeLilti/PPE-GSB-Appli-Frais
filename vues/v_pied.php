@@ -6,11 +6,12 @@
  * @package   GSB
  * @author    Salomé LILTI
  */
-?>
+/*?>
     <div>
-        <H5 id='pieddepage'> PPE GSB Application Frais by Salomé</H5>
+        
+<a footer position: absolute; bottom: 0; href="https://portfoliosalome.boostezvotreenfant.com" bottom:0> Salomé Lilti </a>        
     </div>
     </body>
 </html>
 
-
+*/

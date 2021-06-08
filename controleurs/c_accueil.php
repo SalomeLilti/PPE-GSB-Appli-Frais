@@ -14,6 +14,6 @@ if ($estVisiteurConnecte) {
     include 'vues/v_accueilVisiteur.php';
     }elseif ($estComptableConnecte){
         include 'vues/v_accueilComptable.php';
-} else {
+    } else {
     include 'vues/v_connexion.php';
 }

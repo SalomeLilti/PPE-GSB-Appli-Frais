@@ -1522,6 +1522,23 @@ blockquote.pull-right small:after,
 blockquote.pull-right .small:after {
   content: '\00A0 \2014';
 }
+.footer {
+background:#ccc;
+
+position:absolute;
+
+bottom:0;
+
+width:100%;
+
+padding-top:50px;
+
+height:50px;
+margin:0;
+
+padding:0;
+
+}
 address {
   margin-bottom: 20px;
   font-style: normal;

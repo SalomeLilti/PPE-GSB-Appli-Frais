@@ -12,6 +12,7 @@ $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 $mois= getMois(date('d/m/Y'));
 $etat='VA';
 $nbJustificatifs=0;
+$montantValide=0;
 switch ($action) {
 case 'choisirVisiteurMois':
     $visiteurs= $pdo->getChoisirVisiteur(); //je crée une fonction qui permettra au comptable de choisir un visiteur
@@ -84,7 +85,6 @@ case 'corrigerFraisHorsForfait':
         $lesFraisForfait=$pdo->getLesFraisForfait($idVisiteur,$lstMois);
         $lesFraisHorsForfait=$pdo->getLesFraisHorsForfait($idVisiteur,$lstMois);
         $nbJustificatifs= filter_input(INPUT_POST, 'nbJust', FILTER_SANITIZE_STRING);
-        //include 'vues/v_valideFrais.php';
     }
     if (isset($_POST['reporter'])){
         $mois=getMoisSuivant($lstMois);
@@ -105,13 +105,18 @@ case 'validerFiche':
     $lstMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
     $lesMois=getLes12DerniersMois($mois); 
     $moisASelectionner = $lstMois;
+    
+    $nbJustificatifs= filter_input(INPUT_POST, 'nbJust', FILTER_SANITIZE_STRING);
+    $pdo->setNbJustificatifs($idVisiteur, $lstMois, $nbJustificatifs); //fonction qui insère le nb justificatifs dans la colonne correspondante (dans la table fichefrais)
+    
     $sommeFHF= $pdo->getMontantFHF($idVisiteur, $lstMois);
     $sommeFF= $pdo->getMontantFF($idVisiteur, $lstMois);
-    //$calculMontantValide=$pdo->calculMontantValide($idVisiteur, $lstMois);//fonction a creer
-    $montantValide=$sommeFF+$sommeFHF;
+    $montantValide=$sommeFF[0][0]+$sommeFHF[0][0];
+    $pdo->setMontantValide($idVisiteur, $lstMois, $montantValide);//fonction a arranger
     $etat='VA';
-    $pdo->majEtatFicheFrais($idVisiteur, $lstMois, $etat);
-    include 'vues/v_ficheValidee.php';
+    $valideFrais=$pdo->majEtatFicheFrais($idVisiteur, $lstMois, $etat);
+    ajouterErreur('La fiche a bien été validée');
+    include 'vues/v_messageConfirmation.php';
+    include 'vues/v_choisirVisiteurMois.php';
     break;
-//a faire le 01/03/21: bouton reinitialiser*3 et nb justificatifs
 }

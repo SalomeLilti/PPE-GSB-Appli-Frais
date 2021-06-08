@@ -25,7 +25,7 @@ if ($uc && !$estConnecte) {//si il a reçu le résultat de !$estConnecte,
 } elseif (empty($uc)) {//si $uc est vide, on affecte la valeur accueil à $uc
     $uc = 'accueil';
 }
-switch ($uc) {//sur la variable $uc => façon de donner un cas multiple
+switch ($uc) {//sur la variable $uc
 case 'connexion'://si valeur $uc = connexion
     include 'controleurs/c_connexion.php';//il faut lancer le fichier "c_connexion.php"
     break;

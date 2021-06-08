@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * Vue État de Frais
  * 
@@ -8,6 +8,9 @@
  */
 ?>
 <hr>
+<form method="post" 
+              action="index.php?uc=etatFrais&action=voirEtatFrais"      
+              role="form">
 <div class="panel panel-primary">
     <div class="panel-heading">Fiche de frais du mois 
         <?php echo $numMois . '-' . $numAnnee ?> : </div>
@@ -63,4 +66,6 @@
         }
         ?>
     </table>
+    
 </div>
+   </form>

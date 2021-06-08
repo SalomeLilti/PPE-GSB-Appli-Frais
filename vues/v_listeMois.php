@@ -13,7 +13,7 @@
         <h3>Sélectionner un mois : </h3>
     </div>
     <div class="col-md-4">
-        <!--formulaire : contient ttes les actions et qui permet de les effectuer, l'action c ce qui renvoie au controleur. Méthode: dans quel format les caractères seront renvoyés-->
+        <!--formulaire : contient ttes les actions et qui permet de les effectuer. Méthode: dans quel format les caractères seront renvoyés-->
         <form action="index.php?uc=etatFrais&action=voirEtatFrais" 
               method="post" role="form">
             <div class="form-group">
@@ -27,7 +27,7 @@
                         if ($mois == $moisASelectionner) {
                             ?>
                             <option selected value="<?php echo $mois ?>">
-                                <?php echo $numMois . '/' . $numAnnee ?> </option>
+                                <?php echo $numMois . '/' . $numAnnee?> </option>
                             <?php
                         } else {
                             ?>

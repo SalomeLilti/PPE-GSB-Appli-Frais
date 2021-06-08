@@ -45,13 +45,14 @@ function estComptableConnecte()
 /**
  * Enregistre dans une variable session les infos d'un utilisateur
  *
- * @param String $idUtilisateur ID du visiteur
- * @param String $nom        Nom du visiteur
- * @param String $prenom     Prénom du visiteur
+ * @param String $idUtilisateur ID du visiteur/comptable
+ * @param String $nom        Nom du visiteur/comptable
+ * @param String $prenom     Prénom du visiteur/comptable
+ * @param String $statut     Statut du visiteur/comptable
  *
  * @return null
  */
-function connecter($idUtilisateur, $nom, $prenom, $statut) //jai change idvisiteur en idutilisateur. Bonne idée?
+function connecter($idUtilisateur, $nom, $prenom, $statut)
 {
     $_SESSION['idUtilisateur'] = $idUtilisateur;
     $_SESSION['nom'] = $nom;

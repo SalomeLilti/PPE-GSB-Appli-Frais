@@ -20,7 +20,6 @@ case 'saisirFrais':
     break;
 case 'validerMajFraisForfait': //ajout frais
     $lesFrais = filter_input(INPUT_POST, 'lesFrais',FILTER_DEFAULT, FILTER_FORCE_ARRAY); //jai mis FILTER_FORCE_ARRAY au lieu de FILTER SANITIZE STRING, pr récupérer tt le tableau des frais
-    var_dump($lesFrais);
     if (lesQteFraisValides($lesFrais)) {
         $pdo->majFraisForfait($idVisiteur, $mois, $lesFrais);
     } else {
